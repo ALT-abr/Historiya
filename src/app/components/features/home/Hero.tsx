@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
     return(
@@ -27,7 +28,14 @@ export default function Hero() {
                 </div>
 
                 <div className="flex justify-center lg:justify-end">
-                    
+                    <Image 
+                        src="/images/hero-historiya.png"
+                        alt="Un château féerique avec des personnages sur un livre"
+                        width={750}
+                        height={620}
+                        priority
+                        className="h-auto w-full max-w-700px"
+                    />
                 </div>
             </div>
         </section>
