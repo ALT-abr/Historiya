@@ -1,33 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-
-const universes = [
-  {
-    name: "Aventure",
-    slug: "aventure",
-    image: "/images/universes/aventure.png",
-  },
-  {
-    name: "Amitié",
-    slug: "amitie",
-    image: "/images/universes/amitie.png",
-  },
-  {
-    name: "Histoires du soir",
-    slug: "histoires-du-soir",
-    image: "/images/universes/bedtime.png",
-  },
-  {
-    name: "Animaux",
-    slug: "animaux",
-    image: "/images/universes/animaux.png",
-  },
-  {
-    name: "Magie",
-    slug: "magie",
-    image: "/images/universes/magie.png",
-  },
-];
+import CategoryCard from "../../ui/CategoryCard";
 
 export default function Categories() {
   return (
@@ -44,26 +15,42 @@ export default function Categories() {
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
-          {universes.map((universe) => (
-            <Link
-              key={universe.slug}
-              href={`/histoires?univers=${universe.slug}`}
-              className="group flex flex-col items-center"
-            >
-              <div className="relative aspect-4/5 w-full max-w-[220px] overflow-hidden rounded-[30px] bg-[#f4f1ff] shadow-[0_16px_30px_rgba(55,39,111,0.22)] transition duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_22px_40px_rgba(55,39,111,0.3)]">
-                <Image
-                  src={universe.image}
-                  alt={`Univers ${universe.name}`}
-                  fill
-                  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px"
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="mt-6 text-center text-xl font-bold text-[#37276f] sm:text-2xl">
-                {universe.name}
-              </h3>
-            </Link>
-          ))}
+          <CategoryCard 
+            title = "Aventure"
+            imageSrc = "/images/universes/aventure.png"
+            imageAlt = "Universe d'aventure"
+            href = "/histoires?univers=aventure"
+            variant="public"
+          />
+          <CategoryCard 
+            title = "Amitié"
+            imageSrc = "/images/universes/amitie.png"
+            imageAlt = "Universe d'amitie"
+            href = "/histoires?univers=amitie"
+            variant="public"
+          />
+          <CategoryCard 
+            title = "Histoires du soir"
+            imageSrc = "/images/universes/bedtime.png"
+            imageAlt = "Universe de bedtime"
+            href = "/histoires?univers=bedtime"
+            variant="public"
+          />
+          <CategoryCard 
+            title = "Animaux"
+            imageSrc = "/images/universes/animaux.png"
+            imageAlt = "Universe de animaux"
+            href = "/histoires?univers=animaux"
+            variant="public"
+          />
+          <CategoryCard 
+            title = "Magie"
+            imageSrc = "/images/universes/magie.png"
+            imageAlt = "Universe de magie"
+            href = "/histoires?univers=magie"
+            variant="public"
+
+          />
         </div>
       </div>
     </section>
