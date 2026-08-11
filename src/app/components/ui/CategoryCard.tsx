@@ -29,14 +29,14 @@ export default function CategoryCard({
           href={href}
           className="group flex flex-col items-center">
             <div
-              className="
+              className={`
               relative overflow-hidden
               bg-[#f4f1ff]
               shadow-[0_12px_25px_rgba(23,43,88,0.25)]
               transition duration-300
               group-hover:-translate-y-2
               group-hover:shadow-[0_18px_35px_rgba(23,43,88,0.35)]
-              ${imageStyle}">
+              ${imageStyle}`}>
                 <Image 
                  src={imageSrc}
                  alt={imageAlt}
