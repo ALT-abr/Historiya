@@ -49,7 +49,6 @@ export default function Categories() {
             imageAlt = "Universe de magie"
             href = "/histoires?univers=magie"
             variant="public"
-
           />
         </div>
       </div>
