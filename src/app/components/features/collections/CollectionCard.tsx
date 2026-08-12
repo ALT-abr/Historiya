@@ -16,7 +16,7 @@ export default function CollectionCard({
         <Link href={href}>
             <div 
               className="
-               relative has-[200px] w-[280px]
+               relative aspect-[7/5] w-full max-w-[280px]
                overflow-hidden rounded-[30px]
                transition duration-300
                hover:-translate-y-2

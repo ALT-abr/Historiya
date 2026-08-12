@@ -1,4 +1,5 @@
 import CategoryCard from "@/app/components/ui/CategoryCard"
+import CollectionCard from "@/app/components/features/collections/CollectionCard"
 
 export default function DashboardPage() {
     return(
@@ -74,10 +75,30 @@ export default function DashboardPage() {
             
             <section className="mt-12">
                 <h2 className="text-2xl font-semibold">
-                    Reorendre la lecteur
+                    Reprendre la lecteur
                 </h2>
                 <div>
 
+                </div>
+            </section>
+
+            <section className="mt-12">
+                <h2 className="text-2xl font-semibold">
+                    Collection magique
+                </h2>
+                <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+                    <CollectionCard 
+                        imageSrc="/images/collection/histoires-pour-dormir.png"
+                        imageAlt="Colletion des histoires pour dormir"
+                        href="/histoires?univers=bedtime"/>
+                    <CollectionCard 
+                        imageSrc="/images/collection/petites-aventures.png"
+                        imageAlt="Colletion petites aventures"
+                        href="/histoires?univers=advanturs"/>
+                    <CollectionCard 
+                        imageSrc="/images/collection/mond-magique.png"
+                        imageAlt="Colletion de mond magique"
+                        href="/histoires?univers=magie"/>
                 </div>
             </section>
         </main>
