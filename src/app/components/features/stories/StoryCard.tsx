@@ -18,8 +18,8 @@ export default function StoryCard({
         <Link 
           href={href}
           className="
-           group block w-full max-w-[410px]
-           overflow-hidden rounded-[55px]
+           group block w-full max-w-[200px]
+           overflow-hidden rounded-[30px]
            bg-[#fff1dc]
            shadow-[0_15px_25px_rgba(0,0,0,0.22)]
            transition duration-300
@@ -35,9 +35,9 @@ export default function StoryCard({
             </div>
 
             <div className="flex min-h-[110px] items-center justify-center px-6 py-5">
-                <h3 className="text-center text-3xl font-bold text-black">
+                <p className="text-center text-2xl font-bold text-black">
                     {title}
-                </h3>
+                </p>
             </div>
          </Link>
     )

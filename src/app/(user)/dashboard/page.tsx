@@ -1,5 +1,6 @@
 import CategoryCard from "@/app/components/ui/CategoryCard"
 import CollectionCard from "@/app/components/features/collections/CollectionCard"
+import StoryCard from "@/app/components/features/stories/StoryCard"
 
 export default function DashboardPage() {
     return(
@@ -77,8 +78,25 @@ export default function DashboardPage() {
                 <h2 className="text-2xl font-semibold">
                     Reprendre la lecteur
                 </h2>
-                <div>
-
+                <div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+                    <StoryCard 
+                    title="L’Île aux Étoiles"
+                    imageSrc="/images/stories/herisson.png"
+                    imageAlt="Un hérisson tenant une pancarte Bonjour"
+                    href="/histoires/herisson-bonjour"
+                    />
+                    <StoryCard 
+                    title="L’Île aux Étoiles"
+                    imageSrc="/images/stories/herisson.png"
+                    imageAlt="Un hérisson tenant une pancarte Bonjour"
+                    href="/histoires/herisson-bonjour"
+                    />
+                    <StoryCard 
+                    title="L’Île aux Étoiles"
+                    imageSrc="/images/stories/herisson.png"
+                    imageAlt="Un hérisson tenant une pancarte Bonjour"
+                    href="/histoires/herisson-bonjour"
+                    />
                 </div>
             </section>
 
