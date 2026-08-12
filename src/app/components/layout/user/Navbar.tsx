@@ -9,7 +9,7 @@ import {
 
 const Navbar = () => {
     const links =[
-        { label: 'Accueil', href: '/home', icon: FaHouse},
+        { label: 'Dashboard', href: '/dashboard', icon: FaHouse},
         { label: 'Bib', href: '/biblioteque', icon: FaBookOpen,},
         { label: 'Audio', href: '/audio', icon: FaHeadphones},
         { label: 'Ma stories', href: '/storiesGenerator', icon: FaWandMagicSparkles},
