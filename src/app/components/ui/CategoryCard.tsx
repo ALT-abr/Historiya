@@ -44,7 +44,7 @@ export default function CategoryCard({
                  sizes={imageSizes}
                  className="object-cover"/>
             </div>
-            <h3 className="mt-5 text-center text-xl font-bold text-[#37276f]">
+            <h3 className="mt-5 text-center text-xl font-bold uppercase text-[#37276f]">
                 {title}
             </h3>
         </Link>

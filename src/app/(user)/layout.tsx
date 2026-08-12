@@ -5,12 +5,10 @@ export default function UserLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return(
-    <html>
-      <body>
-        <Navbar />
-        {children}
-      </body>
-    </html>
-  )
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
 }
