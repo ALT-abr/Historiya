@@ -45,7 +45,7 @@ export default function HomePage() {
             <h2 id="categories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">Catégories populaires</h2>
             <Link href="/hisoires#categories" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
           </div>
-          <div className="flex gap-4 overflow-x-auto pb-3 sm:justify-between sm:gap-5">
+          <div className="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
             {categories.map((category) => (
               <CategoryCard key={category.slug} title={category.title} href={`/hisoires?categorie=${category.slug}`} imageSrc={category.imageSrc} imageAlt={`Illustration de la catégorie ${category.title}`} />
             ))}
