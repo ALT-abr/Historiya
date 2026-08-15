@@ -27,13 +27,13 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/hisoires#categories">
-              Catégories
+            <Link className="transition hover:text-[#0d2338]" href="/mystories">
+              MyStories
             </Link>
           </li>
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/#mes-histoires">
-              MyStories
+            <Link className="transition hover:text-[#0d2338]" href="/contacte">
+              Contacte
             </Link>
           </li>
         </ul>
