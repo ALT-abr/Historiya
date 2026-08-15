@@ -32,6 +32,11 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
+            <Link className="transition hover:text-[#0d2338]" href="/audio">
+              Audio
+            </Link>
+          </li>
+          <li>
             <Link className="transition hover:text-[#0d2338]" href="/contacte">
               Contacte
             </Link>
