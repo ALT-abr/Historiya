@@ -10,6 +10,8 @@ const categories = [
   { title: "Animaux", imageSrc: "/categories/animaux.png", slug: "animaux" },
   { title: "Légende", imageSrc: "/categories/legende.png", slug: "legende" },
   { title: "Culture", imageSrc: "/categories/culture.png", slug: "culture" },
+  { title: "Bedtime", imageSrc: "/categories/bedtime.png", slug: "bedtime" },
+  { title: "Educatif", imageSrc: "/categories/educatif.png", slug: "educatif" },
 ];
 
 const popularStories = [
