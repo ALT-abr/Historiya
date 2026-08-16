@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AuthModal from "@/components/auth/AuthModal";
 
 export default function Navbar() {
   return (
@@ -43,12 +44,7 @@ export default function Navbar() {
             Contacte
           </Link>
 
-          <Link
-            href="/sign-in"
-            className="rounded-lg bg-[#0d2338] px-5 py-3 text-sm font-semibold text-white"
-          >
-            Sign in
-          </Link>
+          <AuthModal />
         </div>
       </nav>
     </header>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaInstagram, FaTiktok } from "react-icons/fa6";
-
+import AuthModal from "./auth/AuthModal";
 const footerLinkClass =
   "w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
 
@@ -62,12 +62,7 @@ export default function Footer() {
           <p className="mt-2 text-sm leading-5 text-slate-300">
             Créez un compte pour enregistrer vos histoires et les retrouver facilement.
           </p>
-          <Link
-            href="/sign-in"
-            className="mt-3 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-[#0d2338] transition hover:bg-[#f4ead7] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-          >
-            Sign in
-          </Link>
+          <AuthModal />
         </div>
       </div>
 
