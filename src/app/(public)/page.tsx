@@ -34,7 +34,12 @@ export default function HomePage() {
           <div className="max-w-xl">
             <h1 className="text-4xl font-bold leading-[1.08] tracking-[-0.04em] text-[#10243a] sm:text-5xl lg:text-6xl">Des histoires qui<br />éveillent l’imagination</h1>
             <p className="mt-7 max-w-md text-lg leading-8 text-[#3d4b55] sm:text-xl">Découvrez des histoires merveilleuses<br className="hidden sm:block" /> à lire partout et à tout moment.</p>
-            <Link href="/hisoires" className="mt-9 inline-flex rounded-xl bg-[#0d2338] px-7 py-4 text-base font-semibold text-white shadow-lg shadow-[#0d2338]/15 transition hover:-translate-y-0.5 hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338]">Commencer à lire</Link>
+            <Link 
+              href="/biblioteque" 
+              className="mt-9 inline-flex rounded-xl bg-[#0d2338] px-7 py-4 text-base font-semibold text-white shadow-lg shadow-[#0d2338]/15 transition hover:-translate-y-0.5 hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338]"
+            >
+              Commencer à lire
+            </Link>
           </div>
         </div>
       </section>
