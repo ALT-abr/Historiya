@@ -36,19 +36,20 @@ export default function Navbar() {
               Genere voter histoire
             </Link>
           </li>
-          <li>
-            <Link className="transition hover:text-[#0d2338]" href="/contacte">
-              Contacte
-            </Link>
-          </li>
         </ul>
 
-        <Link
-          href="/sign-in"
-          className="shrink-0 rounded-lg bg-[#0d2338] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d2338]"
-        >
-          Sign in
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/contacte" className="text-sm font-medium text-[#34465a] transition hover:text-[#0d2338]">
+            Contacte
+          </Link>
+
+          <Link
+            href="/sign-in"
+            className="rounded-lg bg-[#0d2338] px-5 py-3 text-sm font-semibold text-white"
+          >
+            Sign in
+          </Link>
+        </div>
       </nav>
     </header>
   );
