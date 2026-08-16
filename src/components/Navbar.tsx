@@ -22,18 +22,18 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/hisoires">
-              Histoires
-            </Link>
-          </li>
-          <li>
-            <Link className="transition hover:text-[#0d2338]" href="/mystories">
-              MyStories
+            <Link className="transition hover:text-[#0d2338]" href="/biblioteque">
+              Biblioteque
             </Link>
           </li>
           <li>
             <Link className="transition hover:text-[#0d2338]" href="/audio">
               Audio
+            </Link>
+          </li>
+          <li>
+            <Link className="transition hover:text-[#0d2338]" href="/mystories">
+              Genere voter histoire
             </Link>
           </li>
           <li>
