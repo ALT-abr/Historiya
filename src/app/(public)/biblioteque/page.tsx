@@ -56,7 +56,7 @@ export default function StoriesPage() {
           <StoryCard
             key={story.slug}
             title={story.title}
-            href={`/hisoires/${story.slug}`}
+            href={`/biblioteque/${story.slug}`}
             imageSrc={story.imageSrc}
             imageAlt={`Illustration de ${story.title}`}
             min={story.min}
@@ -68,7 +68,7 @@ export default function StoriesPage() {
         {[1, 2, 3, 4, 5].map((page) => (
           <Link
             key={page}
-            href={`/hisoires?page=${page}`}
+            href={`/biblioteque?page=${page}`}
             aria-current={page === 1 ? "page" : undefined}
             className={`grid size-10 place-items-center rounded-lg text-sm font-semibold ${page === 1 ? "bg-[#10243a] text-white" : "border border-slate-300 bg-white text-[#10243a] hover:border-[#10243a]"}`}
           >

@@ -48,11 +48,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-7 flex items-center justify-between gap-4">
             <h2 id="categories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">Catégories populaires</h2>
-            <Link href="/hisoires#categories" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
+            <Link href="/biblioteque#categories" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
           </div>
           <div className="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
             {categories.map((category) => (
-              <CategoryCard key={category.slug} title={category.title} href={`/hisoires?categorie=${category.slug}`} imageSrc={category.imageSrc} imageAlt={`Illustration de la catégorie ${category.title}`} />
+              <CategoryCard key={category.slug} title={category.title} href={`/biblioteque?categorie=${category.slug}`} imageSrc={category.imageSrc} imageAlt={`Illustration de la catégorie ${category.title}`} />
             ))}
           </div>
         </div>
@@ -62,11 +62,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-7 flex items-center justify-between gap-4">
             <h2 id="popular-stories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">Histoires populaires</h2>
-            <Link href="/hisoires" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
+            <Link href="/biblioteque" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
           </div>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {popularStories.map((story) => (
-              <StoryCard key={story.slug} title={story.title} href={`/hisoires/${story.slug}`} imageSrc={story.imageSrc} imageAlt={`Illustration de ${story.title}`} min={story.min} />
+              <StoryCard key={story.slug} title={story.title} href={`/biblioteque/${story.slug}`} imageSrc={story.imageSrc} imageAlt={`Illustration de ${story.title}`} min={story.min} />
             ))}
           </div>
         </div>
