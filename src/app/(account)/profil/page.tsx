@@ -157,19 +157,9 @@ export default function ProfilePage() {
         <section className="mt-9 rounded-[2rem] border border-[#eadfd9] bg-white/85 p-5 shadow-[0_20px_60px_rgba(72,52,116,0.09)] backdrop-blur sm:p-8">
           <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr]">
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
-              <div className="relative shrink-0">
-                <div className="grid size-36 place-items-center rounded-full border-4 border-white bg-gradient-to-br from-violet-400 to-indigo-700 text-6xl shadow-[0_10px_28px_rgba(101,70,210,0.28)]">
-                  <span aria-label="Avatar étoile" role="img">⭐</span>
-                </div>
-                <Link
-                  href="/profil/modifier"
-                  aria-label="Modifier l’avatar"
-                  className="absolute bottom-1 right-0 grid size-11 place-items-center rounded-full border-4 border-white bg-white text-xl text-[#16245e] shadow-md transition hover:scale-105 hover:text-violet-600"
-                >
-                  <BiCamera aria-hidden="true" />
-                </Link>
+              <div className="grid size-36 place-items-center rounded-full border-4 border-white bg-gradient-to-br from-violet-400 to-indigo-700 text-6xl shadow-[0_10px_28px_rgba(101,70,210,0.28)]">
+                <span aria-label="Avatar étoile" role="img">⭐</span>
               </div>
-
               <div className="text-center sm:text-left">
                 <h2 className="text-2xl font-extrabold text-[#111e58] sm:text-3xl">
                   Aliouat Abderrahman
