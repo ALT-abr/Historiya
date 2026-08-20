@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AuthModal from "@/components/auth/AuthModal";
+import AccountMenu from "@/components/account/AccountMenu";
 
 export default function Navbar() {
   return (
@@ -44,7 +44,11 @@ export default function Navbar() {
             Contacte
           </Link>
 
-          <AuthModal />
+          {/* Profil temporaire : il sera remplacé par la session Supabase. */}
+          <AccountMenu
+            username="Aliouat"
+            email="aliouat.abderrahman@gmail.com"
+          />
         </div>
       </nav>
     </header>

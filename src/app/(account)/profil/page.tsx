@@ -3,7 +3,6 @@ import type { IconType } from "react-icons";
 import {
   BiBookOpen,
   BiCalendar,
-  BiCamera,
   BiChevronRight,
   BiEditAlt,
   BiHeart,
@@ -16,7 +15,6 @@ import {
 type Stat = {
   label: string;
   value: number;
-  description: string;
   icon: IconType;
   color: string;
   iconBackground: string;
@@ -35,7 +33,6 @@ const stats: Stat[] = [
   {
     label: "Favoris",
     value: 24,
-    description: "Histoires que vous aimez",
     icon: BiHeart,
     color: "text-rose-500",
     iconBackground: "bg-rose-100",
@@ -43,7 +40,6 @@ const stats: Stat[] = [
   {
     label: "À lire plus tard",
     value: 12,
-    description: "Histoires à découvrir",
     icon: BiTime,
     color: "text-violet-600",
     iconBackground: "bg-violet-100",
@@ -51,7 +47,6 @@ const stats: Stat[] = [
   {
     label: "Générées",
     value: 8,
-    description: "Vos histoires personnalisées",
     icon: BiEditAlt,
     color: "text-emerald-600",
     iconBackground: "bg-emerald-100",
@@ -182,7 +177,6 @@ export default function ProfilePage() {
                     </span>
                     <p className={`mt-2 text-3xl font-extrabold ${stat.color}`}>{stat.value}</p>
                     <p className="font-bold text-[#16245e]">{stat.label}</p>
-                    <p className="mt-1 text-xs leading-4 text-[#667085]">{stat.description}</p>
                   </div>
                 );
               })}
