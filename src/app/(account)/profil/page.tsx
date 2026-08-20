@@ -62,7 +62,7 @@ const spaceLinks: ProfileLink[] = [
   {
     title: "Historique de lecture",
     description: "Retrouvez toutes les histoires que vous avez lues",
-    href: "/profil/historique",
+    href: "/historique",
     icon: BiHistory,
     color: "text-violet-600",
     iconBackground: "bg-violet-100",
@@ -70,7 +70,7 @@ const spaceLinks: ProfileLink[] = [
   {
     title: "Mes favoris",
     description: "Vos histoires préférées enregistrées",
-    href: "/profil/favoris",
+    href: "/favoris",
     icon: BiHeart,
     color: "text-rose-500",
     iconBackground: "bg-rose-100",
@@ -78,7 +78,7 @@ const spaceLinks: ProfileLink[] = [
   {
     title: "À lire plus tard",
     description: "Les histoires que vous souhaitez lire plus tard",
-    href: "/profil/a-lire-plus-tard",
+    href: "/a-lire-plus-tard",
     icon: BiSave,
     color: "text-amber-500",
     iconBackground: "bg-amber-100",
