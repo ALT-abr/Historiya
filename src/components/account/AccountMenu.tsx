@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import {
   BiChevronDown,
@@ -11,12 +12,12 @@ import {
   BiSave,
   BiUser,
 } from "react-icons/bi";
+import { createClient } from "@/lib/supabase/client";
 
 type AccountMenuProps = {
   username: string;
   email: string;
   avatarUrl?: string | null;
-  onSignOut?: () => void;
 };
 
 const accountLinks = [
@@ -30,9 +31,10 @@ export default function AccountMenu({
   username,
   email,
   avatarUrl,
-  onSignOut,
 }: AccountMenuProps) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
   const initial = username.trim().charAt(0).toUpperCase() || "?";
@@ -59,9 +61,18 @@ export default function AccountMenu({
     };
   }, [isOpen]);
 
-  function handleSignOut() {
-    setIsOpen(false);
-    onSignOut?.();
+  async function handleSignOut() {
+    setIsSigningOut(true);
+
+    const supabase = createClient();
+    const { error } = await supabase.auth.signOut();
+
+    setIsSigningOut(false);
+
+    if (!error) {
+      setIsOpen(false);
+      router.refresh();
+    }
   }
 
   return (
@@ -130,10 +141,11 @@ export default function AccountMenu({
             type="button"
             role="menuitem"
             onClick={handleSignOut}
-            className="flex w-full items-center gap-3 border-t border-slate-200 px-3 pt-3 pb-1 font-bold text-rose-500 transition hover:text-rose-700"
+            disabled={isSigningOut}
+            className="flex w-full items-center gap-3 border-t border-slate-200 px-3 pt-3 pb-1 font-bold text-rose-500 transition hover:text-rose-700 disabled:cursor-wait disabled:opacity-60"
           >
             <BiLogOut aria-hidden="true" className="size-5" />
-            Déconnexion
+            {isSigningOut ? "Déconnexion..." : "Déconnexion"}
           </button>
         </div>
       )}

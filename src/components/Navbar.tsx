@@ -1,7 +1,28 @@
 import Link from "next/link";
 import AccountMenu from "@/components/account/AccountMenu";
+import AuthModal from "@/components/auth/AuthModal";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let profile: { username: string; avatar_url: string | null } | null = null;
+
+  if (user) {
+    const { data } = await supabase
+      .from("profiles")
+      .select("username, avatar_url")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    profile = data;
+  }
+
+  const fallbackUsername = user?.email?.split("@")[0] ?? "Utilisateur";
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[#fffdf8]/95 backdrop-blur">
       <nav
@@ -44,11 +65,15 @@ export default function Navbar() {
             Contacte
           </Link>
 
-          {/* Profil temporaire : il sera remplacé par la session Supabase. */}
-          <AccountMenu
-            username="Aliouat"
-            email="aliouat.abderrahman@gmail.com"
-          />
+          {user ? (
+            <AccountMenu
+              username={profile?.username || fallbackUsername}
+              email={user.email ?? ""}
+              avatarUrl={profile?.avatar_url}
+            />
+          ) : (
+            <AuthModal />
+          )}
         </div>
       </nav>
     </header>
