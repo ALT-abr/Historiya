@@ -7,6 +7,7 @@ type AccountStoryRowProps = {
   slug: string;
   imageSrc: string;
   addedAt: string;
+  dateLabel?: string;
   lastPageNumber?: number;
 };
 
@@ -15,6 +16,7 @@ export default function AccountStoryRow({
   slug,
   imageSrc,
   addedAt,
+  dateLabel = "Ajoutée le",
   lastPageNumber,
 }: AccountStoryRowProps) {
   return (
@@ -35,7 +37,7 @@ export default function AccountStoryRow({
           {title}
         </span>
         <span className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-[#687196] sm:text-base">
-          <span>Ajoutée le {addedAt}</span>
+          <span>{dateLabel} {addedAt}</span>
           {lastPageNumber !== undefined && (
             <>
               <span aria-hidden="true">•</span>
