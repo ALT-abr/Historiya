@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EditProfileModal from "@/components/account/EditProfileModal";
 import type { IconType } from "react-icons";
 import {
   BiBookOpen,
@@ -81,14 +82,6 @@ const spaceLinks: ProfileLink[] = [
 ];
 
 const settingLinks: ProfileLink[] = [
-  {
-    title: "Modifier le profil",
-    description: "Changez votre avatar et votre nom d’utilisateur",
-    href: "/profil/modifier",
-    icon: BiEditAlt,
-    color: "text-violet-600",
-    iconBackground: "bg-violet-100",
-  },
   {
     title: "Déconnexion",
     description: "Se déconnecter de votre compte",
@@ -201,6 +194,7 @@ export default function ProfilePage() {
               Profil
             </h2>
             <div className="mt-5 space-y-3">
+              <EditProfileModal initialUsername="Aliouat Abderrahman" />
               {settingLinks.map((item) => <ProfileMenuLink key={item.title} item={item} />)}
             </div>
           </section>

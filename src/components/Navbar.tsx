@@ -40,7 +40,7 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4">
-          <Link href="/contacte" className="text-sm font-medium text-[#34465a] transition hover:text-[#0d2338]">
+          <Link href="/contact" className="text-sm font-medium text-[#34465a] transition hover:text-[#0d2338]">
             Contacte
           </Link>
 
