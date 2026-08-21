@@ -50,8 +50,8 @@ export default function Footer() {
           <h2 className="font-semibold">Explorer</h2>
           <nav aria-label="Explorer" className="mt-3 flex flex-col gap-2">
             <Link href="/" className={footerLinkClass}>Accueil</Link>
-            <Link href="/hisoires" className={footerLinkClass}>Bibliothèque</Link>
-            <Link href="/creer-une-histoire" className={footerLinkClass}>Générer votre histoire</Link>
+            <Link href="/biblioteque" className={footerLinkClass}>Bibliothèque</Link>
+            <Link href="/mystories" className={footerLinkClass}>Générer votre histoire</Link>
           </nav>
         </div>
 
