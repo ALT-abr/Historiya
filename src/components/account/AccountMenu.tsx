@@ -71,6 +71,7 @@ export default function AccountMenu({
 
     if (!error) {
       setIsOpen(false);
+      router.replace("/");
       router.refresh();
     }
   }

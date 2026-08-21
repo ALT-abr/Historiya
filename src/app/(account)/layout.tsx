@@ -1,8 +1,15 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
-export default function AccountLayout({ children }: { children: ReactNode }) {
+export default async function AccountLayout({ children }: { children: ReactNode }) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) redirect("/");
+
   return (
     <>
       <Navbar />

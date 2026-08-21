@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AccountMenu from "@/components/account/AccountMenu";
 import AuthModal from "@/components/auth/AuthModal";
+import { DEFAULT_PROFILE_AVATAR, isProfileAvatar } from "@/lib/avatars";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function Navbar() {
@@ -69,7 +70,7 @@ export default async function Navbar() {
             <AccountMenu
               username={profile?.username || fallbackUsername}
               email={user.email ?? ""}
-              avatarUrl={profile?.avatar_url}
+              avatarUrl={profile?.avatar_url && isProfileAvatar(profile.avatar_url) ? profile.avatar_url : DEFAULT_PROFILE_AVATAR}
             />
           ) : (
             <AuthModal />
