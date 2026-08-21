@@ -74,6 +74,7 @@ export default function AuthModal() {
               <SignInForm
                 email={email}
                 onEmailChange={setEmail}
+                onSuccess={closeModal}
                 onSwitchToSignUp={() => setMode("sign-up")}
                 onForgotPassword={() => setMode("forgot-password")}
               />

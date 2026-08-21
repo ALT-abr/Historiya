@@ -1,24 +1,69 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import { FiEye, FiEyeOff, FiLock, FiMail } from "react-icons/fi";
+import { createClient } from "@/lib/supabase/client";
 
 type SignInFormProps = {
   onSwitchToSignUp?: () => void;
   onForgotPassword?: () => void;
   email?: string;
   onEmailChange?: (email: string) => void;
+  onSuccess?: () => void;
 };
 
 const inputClass =
   "h-10 w-full rounded-lg border border-slate-200 bg-white pl-10 pr-3 text-sm text-[#10243a] outline-none transition placeholder:text-slate-400 focus:border-[#26347b] focus:ring-4 focus:ring-[#26347b]/10";
 
-export default function SignInForm({ onSwitchToSignUp, onForgotPassword, email, onEmailChange }: SignInFormProps) {
+export default function SignInForm({
+  onSwitchToSignUp,
+  onForgotPassword,
+  email,
+  onEmailChange,
+  onSuccess,
+}: SignInFormProps) {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const submittedEmail = String(formData.get("email") ?? "").trim();
+    const password = String(formData.get("password") ?? "");
+
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithPassword({
+      email: submittedEmail,
+      password,
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      if (error.code === "invalid_credentials") {
+        setErrorMessage("Adresse e-mail ou mot de passe incorrect.");
+      } else if (error.code === "email_not_confirmed") {
+        setErrorMessage("Confirmez votre adresse e-mail avant de vous connecter.");
+      } else {
+        setErrorMessage(error.message);
+      }
+      return;
+    }
+
+    onSuccess?.();
+    router.refresh();
+  }
 
   return (
-    <form className="w-full" method="post">
+    <form className="w-full" onSubmit={handleSubmit}>
       <div className="relative mx-auto h-24 w-48">
         <Image
           src="/auth/signin-reader.png"
@@ -90,11 +135,20 @@ export default function SignInForm({ onSwitchToSignUp, onForgotPassword, email, 
         Mot de passe oublié ?
       </button>
 
+      <div aria-live="polite">
+        {errorMessage && (
+          <p role="alert" className="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700">
+            {errorMessage}
+          </p>
+        )}
+      </div>
+
       <button
         type="submit"
-        className="mt-4 w-full rounded-lg bg-[#202b70] px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-[#202b70]/20 transition hover:bg-[#17205b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#202b70]"
+        disabled={isSubmitting}
+        className="mt-4 w-full rounded-lg bg-[#202b70] px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-[#202b70]/20 transition hover:bg-[#17205b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#202b70] disabled:cursor-wait disabled:opacity-60"
       >
-        Se connecter
+        {isSubmitting ? "Connexion en cours..." : "Se connecter"}
       </button>
 
       <div className="mt-4 flex items-center justify-center gap-2 border-t border-dashed border-[#e4c98e] pt-4 text-xs text-slate-600">
