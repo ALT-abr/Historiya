@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { FiEye, FiEyeOff, FiLock, FiMail, FiUser } from "react-icons/fi";
+import { createClient } from "@/lib/supabase/client";
 
 type SignUpFormProps = {
   onSwitchToSignIn?: () => void;
@@ -13,9 +14,51 @@ const inputClass =
 
 export default function SignUpForm({ onSwitchToSignIn }: SignUpFormProps) {
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const username = String(formData.get("username") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const password = String(formData.get("password") ?? "");
+
+    setIsSubmitting(true);
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          username,
+        },
+      },
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      setErrorMessage(error.message);
+      return;
+    }
+
+    form.reset();
+    setSuccessMessage(
+      data.session
+        ? "Votre compte a bien été créé."
+        : "Compte créé. Consultez votre e-mail pour confirmer votre inscription.",
+    );
+  }
 
   return (
-    <form className="w-full" method="post">
+    <form className="w-full" onSubmit={handleSubmit}>
       <div className="relative mx-auto h-24 w-48">
         <Image
           src="/auth/signup-reader.png"
@@ -47,6 +90,7 @@ export default function SignUpForm({ onSwitchToSignIn }: SignUpFormProps) {
               name="username"
               type="text"
               autoComplete="username"
+              maxLength={40}
               placeholder="ex. PetitLecteur"
               required
               className={inputClass}
@@ -100,11 +144,25 @@ export default function SignUpForm({ onSwitchToSignIn }: SignUpFormProps) {
         </div>
       </div>
 
+      <div aria-live="polite">
+        {errorMessage && (
+          <p role="alert" className="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700">
+            {errorMessage}
+          </p>
+        )}
+        {successMessage && (
+          <p className="mt-4 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700">
+            {successMessage}
+          </p>
+        )}
+      </div>
+
       <button
         type="submit"
-        className="mt-4 w-full rounded-lg bg-[#202b70] px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-[#202b70]/20 transition hover:bg-[#17205b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#202b70]"
+        disabled={isSubmitting}
+        className="mt-4 w-full rounded-lg bg-[#202b70] px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-[#202b70]/20 transition hover:bg-[#17205b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#202b70] disabled:cursor-wait disabled:opacity-60"
       >
-        Créer un compte
+        {isSubmitting ? "Création en cours..." : "Créer un compte"}
       </button>
 
       <div className="mt-4 flex items-center justify-center gap-2 border-t border-dashed border-[#e4c98e] pt-4 text-xs text-slate-600">
