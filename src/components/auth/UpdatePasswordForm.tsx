@@ -67,7 +67,7 @@ export default function UpdatePasswordForm({ linkError = false }: UpdatePassword
   return (
     <form onSubmit={handleSubmit}>
       <div className="relative mx-auto h-32 w-60">
-        <Image src="/auth/new-password-lock.png" alt="Un cadenas violet accompagné d’une clé étoilée" fill sizes="240px" className="object-contain" priority />
+        <Image src="/auth/new-password-lock.png?version=2" alt="Un cadenas violet accompagné d’une clé dorée" fill sizes="240px" className="object-contain" priority unoptimized />
       </div>
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-[#151f56]">Nouveau mot de passe</h1>
