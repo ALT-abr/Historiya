@@ -1,9 +1,6 @@
 import Image from "next/image";
-import { FiHeart, FiMail, FiMessageCircle, FiSend } from "react-icons/fi";
-import { FaInstagram, FaTiktok } from "react-icons/fa6";
-
-const inputClass =
-  "h-11 w-full rounded-lg border border-[#ded9d0] bg-white px-4 text-sm text-[#10243a] outline-none transition placeholder:text-slate-400 focus:border-[#4f55b5] focus:ring-4 focus:ring-[#4f55b5]/10";
+import { FiHeart, FiMail, FiMessageCircle } from "react-icons/fi";
+import ContactForm from "@/components/ContactForm";
 
 export default function ContactePage() {
   return (
@@ -34,45 +31,7 @@ export default function ContactePage() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-5 px-5 pb-14 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
-        <form className="rounded-2xl border border-[#e7e0d5] bg-white p-5 shadow-sm sm:p-6">
-          <h2 className="flex items-center gap-3 text-lg font-bold text-[#18215b]">
-            <FiMail aria-hidden="true" className="text-[#6266d7]" />
-            Envoyez-nous un message
-          </h2>
-
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="contact-name" className="mb-1.5 block text-xs font-semibold text-[#202951]">Nom</label>
-              <input id="contact-name" name="name" type="text" autoComplete="name" placeholder="Votre nom" required className={inputClass} />
-            </div>
-            <div>
-              <label htmlFor="contact-email" className="mb-1.5 block text-xs font-semibold text-[#202951]">Email</label>
-              <input id="contact-email" name="email" type="email" autoComplete="email" placeholder="Votre email" required className={inputClass} />
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <label htmlFor="contact-subject" className="mb-1.5 block text-xs font-semibold text-[#202951]">Sujet</label>
-            <input
-              id="contact-subject"
-              name="subject"
-              type="text"
-              placeholder="Écrivez le sujet de votre message"
-              required
-              className={inputClass}
-            />
-          </div>
-
-          <div className="mt-4">
-            <label htmlFor="contact-message" className="mb-1.5 block text-xs font-semibold text-[#202951]">Message</label>
-            <textarea id="contact-message" name="message" rows={4} placeholder="Décrivez votre message..." required className="w-full resize-y rounded-lg border border-[#ded9d0] bg-white px-4 py-3 text-sm text-[#10243a] outline-none transition placeholder:text-slate-400 focus:border-[#4f55b5] focus:ring-4 focus:ring-[#4f55b5]/10" />
-          </div>
-
-          <button type="submit" className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#5553b9] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#41409a]">
-            <FiSend aria-hidden="true" />
-            Envoyer le message
-          </button>
-        </form>
+        <ContactForm />
 
         <div className="rounded-2xl border border-[#e7e0d5] bg-white p-5 shadow-sm sm:p-6">
           <h2 className="flex items-center gap-3 text-lg font-bold text-[#18215b]">
