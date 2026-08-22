@@ -92,8 +92,8 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
           <p className="mt-3 max-w-2xl text-[#5d6a74]">Trouvez la prochaine histoire qui fera voyager votre imagination.</p>
         </div>
 
-        <form action="/biblioteque" method="get" className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="relative w-full sm:max-w-4xl">
+        <form action="/biblioteque" method="get" className="mt-8 flex items-center gap-2 sm:gap-3">
+          <div className="relative min-w-0 flex-1">
             <FiSearch aria-hidden="true" className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-slate-400" />
             <label htmlFor="story-search" className="sr-only">Rechercher une histoire</label>
             <input
@@ -106,17 +106,17 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
             />
           </div>
 
-          <div className="flex flex-wrap items-end gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <div>
-              <label htmlFor="story-category" className="mb-1 block text-sm text-[#46545e]">Catégorie</label>
-              <select id="story-category" name="categorie" defaultValue={category} className="h-11 rounded-lg border border-slate-300 bg-white px-4 text-sm text-[#10243a] outline-none focus:border-[#315e78]">
+              <label htmlFor="story-category" className="sr-only">Catégorie</label>
+              <select id="story-category" name="categorie" defaultValue={category} className="h-11 w-24 rounded-lg border border-slate-300 bg-white px-2 text-sm text-[#10243a] outline-none focus:border-[#315e78] sm:w-40 sm:px-4">
                 <option value="">Toutes</option>
                 {categories.map((item) => (
                   <option key={item.slug} value={item.slug}>{item.category_name}</option>
                 ))}
               </select>
             </div>
-            <button type="submit" className="h-11 rounded-lg bg-[#10243a] px-5 text-sm font-semibold text-white transition hover:bg-[#1c3b58]">Rechercher</button>
+            <button type="submit" className="h-11 rounded-lg bg-[#10243a] px-3 text-xs font-semibold text-white transition hover:bg-[#1c3b58] sm:px-5 sm:text-sm">Rechercher</button>
           </div>
         </form>
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AccountMenu from "@/components/account/AccountMenu";
 import AuthModal from "@/components/auth/AuthModal";
+import MobileMenu from "@/components/MobileMenu";
 import { DEFAULT_PROFILE_AVATAR, isProfileAvatar } from "@/lib/avatars";
 import { createClient } from "@/lib/supabase/server";
 
@@ -56,12 +57,12 @@ export default async function Navbar() {
           </li>
           <li>
             <Link className="transition hover:text-[#0d2338]" href="/mystories">
-              Générer voter histoire
+              Générer votre histoire
             </Link>
           </li>
         </ul>
 
-        <div className="flex items-center gap-4">
+        <div className="hidden items-center gap-4 md:flex">
           <Link href="/contact" className="text-sm font-medium text-[#34465a] transition hover:text-[#0d2338]">
             Contact
           </Link>
@@ -76,6 +77,8 @@ export default async function Navbar() {
             <AuthModal />
           )}
         </div>
+
+        <MobileMenu isAuthenticated={Boolean(user)} username={profile?.username || fallbackUsername} />
       </nav>
     </header>
   );
