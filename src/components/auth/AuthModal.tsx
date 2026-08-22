@@ -9,13 +9,23 @@ import ForgotPasswordForm from "./ForgotPasswordForm";
 
 type AuthMode = "sign-in" | "sign-up" | "forgot-password";
 
-export default function AuthModal() {
+type AuthModalProps = {
+  defaultMode?: "sign-in" | "sign-up";
+  buttonLabel?: string;
+  buttonClassName?: string;
+};
+
+export default function AuthModal({
+  defaultMode = "sign-in",
+  buttonLabel = "Sign in",
+  buttonClassName = "rounded-lg bg-[#0d2338] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173a59]",
+}: AuthModalProps = {}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [mode, setMode] = useState<AuthMode>("sign-in");
+  const [mode, setMode] = useState<AuthMode>(defaultMode);
   const [email, setEmail] = useState("");
 
   function openModal() {
-    setMode("sign-in");
+    setMode(defaultMode);
     setIsOpen(true);
   }
 
@@ -44,9 +54,9 @@ export default function AuthModal() {
       <button
         type="button"
         onClick={openModal}
-        className="rounded-lg bg-[#0d2338] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#173a59]"
+        className={buttonClassName}
       >
-        Sign in
+        {buttonLabel}
       </button>
 
       {isOpen && createPortal(

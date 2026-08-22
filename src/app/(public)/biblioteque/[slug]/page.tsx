@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FiArrowLeft, FiBookOpen, FiBookmark, FiClock, FiHeadphones, FiHeart } from "react-icons/fi";
+import { FiArrowLeft, FiBookOpen, FiClock, FiHeadphones } from "react-icons/fi";
 import StoryCard from "@/components/StoryCard";
+import StoryActions from "@/components/StoryActions";
 import { createClient } from "@/lib/supabase/server";
 
 type StoryDetailsPageProps = {
@@ -15,6 +16,9 @@ type StoryCategoryRelation = { categories: CategoryRelation | CategoryRelation[]
 export default async function StoryDetailsPage({ params }: StoryDetailsPageProps) {
   const { slug } = await params;
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const { data: story, error: storyError } = await supabase
     .from("stories")
@@ -62,6 +66,20 @@ export default async function StoryDetailsPage({ params }: StoryDetailsPageProps
   });
   const firstPageNumber = firstPageResult.data?.page_number;
   const similarStories = similarStoriesResult.data ?? [];
+  let initialFavorite = false;
+  let initialReadLater = false;
+
+  if (user) {
+    const [favoriteResult, readLaterResult] = await Promise.all([
+      supabase.from("favorites").select("story_id").eq("user_id", user.id).eq("story_id", story.id).maybeSingle(),
+      supabase.from("read_later").select("story_id").eq("user_id", user.id).eq("story_id", story.id).maybeSingle(),
+    ]);
+
+    if (favoriteResult.error) throw new Error(`Impossible de charger le favori : ${favoriteResult.error.message}`);
+    if (readLaterResult.error) throw new Error(`Impossible de charger la liste de lecture : ${readLaterResult.error.message}`);
+    initialFavorite = Boolean(favoriteResult.data);
+    initialReadLater = Boolean(readLaterResult.data);
+  }
 
   return (
     <main className="bg-[#fffdf8]">
@@ -107,13 +125,7 @@ export default async function StoryDetailsPage({ params }: StoryDetailsPageProps
                 <FiHeadphones aria-hidden="true" className="size-5" /> Audio
               </Link>
 
-              <button type="button" aria-label="Ajouter aux favoris" className="grid size-11 place-items-center rounded-xl border border-[#ccd3d7] bg-white text-[#10243a] transition hover:border-[#d35b67] hover:bg-[#fff1f2] hover:text-[#c23c4b]">
-                <FiHeart aria-hidden="true" className="size-5" />
-              </button>
-
-              <button type="button" className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#ccd3d7] bg-white px-5 py-3 text-sm font-semibold text-[#10243a] transition hover:border-[#10243a]">
-                <FiBookmark aria-hidden="true" className="size-5" /> Lire plus tard
-              </button>
+              <StoryActions storyId={story.id} userId={user?.id ?? null} initialFavorite={initialFavorite} initialReadLater={initialReadLater} />
             </div>
           </div>
         </div>
