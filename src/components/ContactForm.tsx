@@ -30,23 +30,39 @@ export default function ContactForm() {
     setSuccessMessage(null);
     setErrorMessage(null);
 
-    const supabase = createClient();
-    const { error } = await supabase.from("contact_messages").insert({
-      name,
-      email,
-      subject,
-      message,
-    });
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.from("contact_messages").insert({
+        name,
+        email,
+        subject,
+        message,
+      });
 
-    setIsSending(false);
+      if (error) {
+        setErrorMessage("Le message n’a pas pu être enregistré. Veuillez réessayer.");
+        return;
+      }
 
-    if (error) {
-      setErrorMessage("Le message n’a pas pu être envoyé. Veuillez réessayer.");
-      return;
+      const notificationResponse = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+
+      form.reset();
+
+      if (!notificationResponse.ok) {
+        setErrorMessage("Votre message est enregistré, mais l’e-mail n’a pas pu être envoyé.");
+        return;
+      }
+
+      setSuccessMessage("Votre message a bien été envoyé. Merci !");
+    } catch {
+      setErrorMessage("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setIsSending(false);
     }
-
-    form.reset();
-    setSuccessMessage("Votre message a bien été envoyé. Merci !");
   }
 
   return (
