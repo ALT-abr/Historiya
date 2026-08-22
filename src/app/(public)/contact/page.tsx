@@ -46,7 +46,7 @@ export default function ContactePage() {
               </div>
               <div>
                 <h3 className="font-bold text-[#202951]">Email</h3>
-                <p className="mt-1 text-sm font-bold text-[#46516b]">contact@historiya.com</p>
+                <p className="mt-1 text-sm font-bold text-[#46516b]">historiya.contact@gmail.com</p>
                 <p className="mt-1 text-xs text-slate-500">Nous répondons sous 24h.</p>
               </div>
             </div>
