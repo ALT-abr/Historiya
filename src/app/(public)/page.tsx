@@ -2,29 +2,36 @@ import Image from "next/image";
 import Link from "next/link";
 import CategoryCard from "@/components/CategoryCard";
 import StoryCard from "@/components/StoryCard";
+import { createClient } from "@/lib/supabase/server";
 
-const categories = [
-  { title: "Aventure", imageSrc: "/categories/advanture.png", slug: "aventure" },
-  { title: "Fantastique", imageSrc: "/categories/fantasy.png", slug: "fantastique" },
-  { title: "Amitié", imageSrc: "/categories/amitie.png", slug: "amitie" },
-  { title: "Animaux", imageSrc: "/categories/animaux.png", slug: "animaux" },
-  { title: "Légende", imageSrc: "/categories/legende.png", slug: "legende" },
-  { title: "Culture", imageSrc: "/categories/culture.png", slug: "culture" },
-  { title: "Bedtime", imageSrc: "/categories/bedtime.png", slug: "bedtime" },
-  { title: "Educatif", imageSrc: "/categories/educatif.png", slug: "educatif" },
-];
+export default async function HomePage() {
+  const supabase = await createClient();
+  const [categoriesResult, storiesResult] = await Promise.all([
+    supabase
+      .from("categories")
+      .select("category_name, slug, image_url")
+      .order("category_name", { ascending: true })
+      .limit(8),
+    supabase
+      .from("stories")
+      .select("title, slug, cover_url, reading_time_minutes")
+      .eq("is_published", true)
+      .order("is_featured", { ascending: false })
+      .order("created_at", { ascending: false })
+      .limit(10),
+  ]);
 
-const popularStories = [
-  { title: "La fille qui partit à la lune", imageSrc: "/stories/la fille qui partie a la lune.png", slug: "la-fille-qui-partit-a-la-lune", min: 13 },
-  { title: "La merveille de Soumar", imageSrc: "/stories/la merveille de soumar.png", slug: "la-merveille-de-soumar", min: 10 },
-  { title: "Le ballon bleu", imageSrc: "/stories/le ballent blue.png", slug: "le-ballon-bleu", min: 11 },
-  { title: "Le dragon qui avait peur du noir", imageSrc: "/stories/le dragon qui a fait peur de noir.png", slug: "le-dragon-qui-avait-peur-du-noir", min: 9 },
-  { title: "Le village sucré", imageSrc: "/stories/le village sucre.png", slug: "le-village-sucre", min: 14 },
-  { title: "Les trois frères", imageSrc: "/stories/les trois frere.png", slug: "les-trois-freres", min: 12 },
-  { title: "Le hérisson qui cherchait un ami", imageSrc: "/stories/le herisson qui cherchait un ami.png", slug: "le-herisson-qui-cherchait-un-ami", min: 12 },
-];
+  if (categoriesResult.error) {
+    throw new Error(`Impossible de charger les catégories : ${categoriesResult.error.message}`);
+  }
 
-export default function HomePage() {
+  if (storiesResult.error) {
+    throw new Error(`Impossible de charger les histoires : ${storiesResult.error.message}`);
+  }
+
+  const databaseCategories = categoriesResult.data ?? [];
+  const databaseStories = storiesResult.data ?? [];
+
   return (
     <main>
       <section className="relative isolate min-h-[400px] overflow-hidden bg-[#fff4de]">
@@ -51,8 +58,8 @@ export default function HomePage() {
             <Link href="/biblioteque#categories" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
           </div>
           <div className="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-            {categories.map((category) => (
-              <CategoryCard key={category.slug} title={category.title} href={`/biblioteque?categorie=${category.slug}`} imageSrc={category.imageSrc} imageAlt={`Illustration de la catégorie ${category.title}`} />
+            {databaseCategories.map((category) => (
+              <CategoryCard key={category.slug} title={category.category_name} href={`/biblioteque?categorie=${category.slug}`} imageSrc={category.image_url} imageAlt={`Illustration de la catégorie ${category.category_name}`} />
             ))}
           </div>
         </div>
@@ -64,11 +71,17 @@ export default function HomePage() {
             <h2 id="popular-stories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">Histoires populaires</h2>
             <Link href="/biblioteque" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
           </div>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {popularStories.map((story) => (
-              <StoryCard key={story.slug} title={story.title} href={`/biblioteque/${story.slug}`} imageSrc={story.imageSrc} imageAlt={`Illustration de ${story.title}`} min={story.min} />
-            ))}
-          </div>
+          {databaseStories.length === 0 ? (
+            <p className="rounded-2xl bg-white px-6 py-10 text-center text-[#52616b] shadow-sm">
+              Aucune histoire publiée pour le moment.
+            </p>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+              {databaseStories.map((story) => (
+                <StoryCard key={story.slug} title={story.title} href={`/biblioteque/${story.slug}`} imageSrc={story.cover_url} imageAlt={`Illustration de ${story.title}`} min={story.reading_time_minutes} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
