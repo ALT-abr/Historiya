@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FiArrowLeft, FiChevronLeft, FiChevronRight, FiStar } from "react-icons/fi";
+import ReadingHistoryTracker from "@/components/ReadingHistoryTracker";
 import { createClient } from "@/lib/supabase/server";
 
 type ReaderPageProps = {
@@ -15,6 +16,9 @@ export default async function ReaderPage({ params }: ReaderPageProps) {
   if (!Number.isInteger(pageNumber) || pageNumber < 0) notFound();
 
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   const { data: story, error: storyError } = await supabase
     .from("stories")
     .select("id, title, slug")
@@ -56,6 +60,7 @@ export default async function ReaderPage({ params }: ReaderPageProps) {
 
   return (
     <main className="min-h-dvh bg-[#fffcf8] text-[#111f55] lg:h-dvh lg:overflow-hidden">
+      <ReadingHistoryTracker userId={user?.id ?? null} storyId={story.id} pageNumber={storyPage.page_number} />
       <div className="mx-auto flex min-h-dvh max-w-[1600px] flex-col px-4 py-4 sm:px-7 lg:h-dvh lg:min-h-0 lg:px-8 lg:py-4">
         <Link href={`/biblioteque/${story.slug}`} className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-white px-3.5 py-2 text-sm font-bold text-[#17245c] shadow-sm ring-1 ring-slate-200 transition hover:bg-violet-50 hover:text-violet-700 lg:mb-3">
           <FiArrowLeft aria-hidden="true" /> Retour à l’histoire
