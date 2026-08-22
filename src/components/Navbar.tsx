@@ -46,7 +46,7 @@ export default async function Navbar() {
           </li>
           <li>
             <Link className="transition hover:text-[#0d2338]" href="/biblioteque">
-              Biblioteque
+              Bibliothèque
             </Link>
           </li>
           <li>
@@ -56,14 +56,14 @@ export default async function Navbar() {
           </li>
           <li>
             <Link className="transition hover:text-[#0d2338]" href="/mystories">
-              Genere voter histoire
+              Générer voter histoire
             </Link>
           </li>
         </ul>
 
         <div className="flex items-center gap-4">
           <Link href="/contact" className="text-sm font-medium text-[#34465a] transition hover:text-[#0d2338]">
-            Contacte
+            Contact
           </Link>
 
           {user ? (
