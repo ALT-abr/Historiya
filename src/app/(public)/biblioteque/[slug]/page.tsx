@@ -63,7 +63,7 @@ export default async function StoryDetailsPage({ params }: StoryDetailsPageProps
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href={`/biblioteque/${story.slug}/lire`}
+                href={`/biblioteque/${story.slug}/lire/1`}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#10243a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1c3b58]"
               >
                 <FiBookOpen aria-hidden="true" className="size-5" />
