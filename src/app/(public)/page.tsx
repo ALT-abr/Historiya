@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import CategoryCard from "@/components/CategoryCard";
+import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 import StoryCard from "@/components/StoryCard";
 import { createClient } from "@/lib/supabase/server";
 
@@ -10,8 +10,7 @@ export default async function HomePage() {
     supabase
       .from("categories")
       .select("category_name, slug, image_url")
-      .order("category_name", { ascending: true })
-      .limit(8),
+      .order("category_name", { ascending: true }),
     supabase
       .from("stories")
       .select("title, slug, cover_url, reading_time_minutes")
@@ -51,19 +50,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#fffdf8] py-12 sm:py-16" aria-labelledby="categories-title">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-7 flex items-center justify-between gap-4">
-            <h2 id="categories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">Catégories populaires</h2>
-            <Link href="/biblioteque#categories" className="text-sm font-semibold text-[#315e78] transition hover:text-[#0d2338]">Voir toutes</Link>
-          </div>
-          <div className="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-            {databaseCategories.map((category) => (
-              <CategoryCard key={category.slug} title={category.category_name} href={`/biblioteque?categorie=${category.slug}`} imageSrc={category.image_url} imageAlt={`Illustration de la catégorie ${category.category_name}`} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <HomeCategoriesSection categories={databaseCategories} />
 
       <section className="bg-[#f5f1e8] py-12 sm:py-16" aria-labelledby="popular-stories-title">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
