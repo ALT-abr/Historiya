@@ -21,7 +21,7 @@ export default function HomeCategoriesSection({ categories }: HomeCategoriesSect
   const displayedCategories = showAll ? categories : categories.slice(0, visibleCategoryCount);
 
   return (
-    <section className="bg-[#fffdf8] py-12 sm:py-16" aria-labelledby="categories-title">
+    <section className="bg-transparent py-12 sm:py-16" aria-labelledby="categories-title">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="mb-7 flex items-center justify-between gap-4">
           <h2 id="categories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">

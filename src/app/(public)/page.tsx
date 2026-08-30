@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 import StoryCard from "@/components/StoryCard";
@@ -32,10 +31,8 @@ export default async function HomePage() {
   const databaseStories = storiesResult.data ?? [];
 
   return (
-    <main>
-      <section className="relative isolate min-h-[400px] overflow-hidden bg-[#fff4de]">
-        <Image src="/historiya-hero.png" alt="Un enfant lit une histoire avec un petit renard dans une forêt enchantée" fill preload sizes="100vw" className="-z-20 object-cover object-[68%_center] sm:object-center" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#fff6e5] via-[#fff6e5]/95 to-[#fff6e5]/5 sm:via-[#fff6e5]/75 sm:to-transparent" />
+    <main className="bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)]">
+      <section className="relative isolate -mt-[88px] min-h-[488px] overflow-hidden pt-[88px]">
         <div className="mx-auto flex min-h-[400px] max-w-7xl items-center px-5 py-10 sm:px-8 lg:px-10">
           <div className="max-w-xl">
             <h1 className="text-4xl font-bold leading-[1.08] tracking-[-0.04em] text-[#10243a] sm:text-5xl lg:text-6xl">Des histoires qui<br />éveillent l’imagination</h1>
@@ -52,7 +49,7 @@ export default async function HomePage() {
 
       <HomeCategoriesSection categories={databaseCategories} />
 
-      <section className="bg-[#f5f1e8] py-12 sm:py-16" aria-labelledby="popular-stories-title">
+      <section className="bg-transparent py-12 sm:py-16" aria-labelledby="popular-stories-title">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-7 flex items-center justify-between gap-4">
             <h2 id="popular-stories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">Histoires populaires</h2>

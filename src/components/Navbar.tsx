@@ -26,10 +26,10 @@ export default async function Navbar() {
   const fallbackUsername = user?.email?.split("@")[0] ?? "Utilisateur";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[#fffdf8]/95 backdrop-blur">
+    <header className="sticky top-0 z-50 bg-transparent px-3 py-3 sm:px-5">
       <nav
         aria-label="Navigation principale"
-        className="relative mx-auto flex h-20 max-w-7xl items-center gap-5 px-5 sm:px-8 lg:px-10"
+        className="relative mx-auto flex h-16 max-w-7xl items-center gap-5 rounded-2xl border border-white/80 bg-white/95 px-5 shadow-[0_12px_35px_rgba(40,55,105,0.10)] sm:px-7 lg:px-8"
       >
         <Link
           href="/"
@@ -39,24 +39,24 @@ export default async function Navbar() {
           Historiya
         </Link>
 
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 whitespace-nowrap text-sm font-medium text-[#34465a] md:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 whitespace-nowrap text-sm font-semibold text-[#34465a] md:flex">
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/">
+            <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/">
               Accueil
             </Link>
           </li>
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/biblioteque">
+            <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/biblioteque">
               Bibliothèque
             </Link>
           </li>
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/audio">
+            <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/audio">
               Audio
             </Link>
           </li>
           <li>
-            <Link className="transition hover:text-[#0d2338]" href="/mystories">
+            <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/mystories">
               Générer votre histoire
             </Link>
           </li>
