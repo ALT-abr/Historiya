@@ -66,9 +66,9 @@ export default async function ReaderPage({ params }: ReaderPageProps) {
           <FiArrowLeft aria-hidden="true" /> Retour à l’histoire
         </Link>
 
-        <div className="grid flex-1 items-stretch gap-7 lg:min-h-0 lg:grid-cols-[1.04fr_0.96fr] lg:gap-9 xl:gap-12">
+        <div className="grid flex-1 items-stretch gap-7 lg:min-h-0 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-9 xl:gap-12">
           <section className="relative min-h-[44svh] overflow-hidden rounded-[1.75rem] bg-violet-100 shadow-[0_20px_60px_rgba(48,35,92,0.12)] sm:min-h-[55svh] lg:min-h-0">
-            <Image src={storyPage.image_url} alt={`Illustration de ${story.title}, page ${storyPage.page_number}`} fill priority sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src={storyPage.image_url} alt={`Illustration de ${story.title}, page ${storyPage.page_number}`} fill priority sizes="(max-width: 1024px) 100vw, 38vw" className="object-cover" />
           </section>
 
           <article className="flex min-h-0 flex-col px-1 py-1 sm:px-3 lg:py-2">
