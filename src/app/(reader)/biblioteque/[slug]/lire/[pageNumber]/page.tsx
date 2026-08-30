@@ -78,7 +78,7 @@ export default async function ReaderPage({ params }: ReaderPageProps) {
             </header>
 
             <div className={`my-auto py-7 sm:py-9 lg:min-h-0 lg:overflow-hidden ${contentPositionClass}`}>
-              <p className={`whitespace-pre-line [font-family:Georgia,'Times_New_Roman',serif] text-lg leading-[1.65] text-[#182858] first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:text-5xl first-letter:font-bold first-letter:leading-[0.8] first-letter:text-violet-600 sm:text-xl ${contentSizeClass}`}>
+              <p className={`whitespace-pre-line [font-family:var(--font-story),Georgia,'Times_New_Roman',serif] text-lg leading-[1.65] text-[#182858] first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:text-5xl first-letter:font-bold first-letter:leading-[0.8] first-letter:text-violet-600 sm:text-xl ${contentSizeClass}`}>
                 {storyPage.content}
               </p>
             </div>
