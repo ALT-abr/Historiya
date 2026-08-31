@@ -40,9 +40,7 @@ export default function Footer() {
         <div>
           <h2 className="font-semibold">Informations</h2>
           <nav aria-label="Informations" className="mt-3 flex flex-col gap-2">
-            <Link href="/#" className={footerLinkClass}>À propos</Link>
             <Link href="/contact" className={footerLinkClass}>Contact</Link>
-            <Link href="/#" className={footerLinkClass}>FAQ</Link>
           </nav>
         </div>
 
