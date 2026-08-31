@@ -23,3 +23,27 @@ h2,
 h3 {
   font-family: var(--font-lora), Georgia, "Times New Roman", serif;
 }
+
+@keyframes footer-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.25);
+  }
+}
+
+.footer-star {
+  animation: footer-twinkle 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-star {
+    animation: none;
+    opacity: 0.55;
+  }
+}

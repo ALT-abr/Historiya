@@ -4,6 +4,8 @@ import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 import StoryCard from "@/components/StoryCard";
 import { createClient } from "@/lib/supabase/server";
 
+const STORY_INITIALS = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"];
+
 export default async function HomePage() {
   const supabase = await createClient();
   const [categoriesResult, storiesResult] = await Promise.all([
@@ -78,6 +80,47 @@ export default async function HomePage() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      <section
+        className="border-t border-[#10243a]/10 bg-[#f3eee6] py-14 sm:py-16"
+        aria-labelledby="alphabetical-index-title"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#678091]">
+              Explorer la bibliothèque
+            </p>
+            <h2
+              id="alphabetical-index-title"
+              className="mt-2 text-3xl font-black tracking-tight text-[#10243a] sm:text-4xl"
+            >
+              Histoires de A à Z
+            </h2>
+            <p className="mt-3 text-[#5d6a74]">
+              Choisissez une lettre ou un chiffre pour découvrir les histoires dont le titre commence ainsi.
+            </p>
+          </div>
+
+          <nav aria-label="Histoires classées par lettre ou chiffre" className="mx-auto mt-8 max-w-4xl">
+            <ul className="flex flex-wrap justify-center gap-2 sm:gap-3">
+              {STORY_INITIALS.map((initial) => (
+                <li
+                  key={initial}
+                  className="w-[calc(16.6667%_-_0.4167rem)] sm:w-[calc(11.1111%_-_0.6667rem)] lg:w-[calc(5.5556%_-_0.7083rem)]"
+                >
+                  <Link
+                    href={{ pathname: "/biblioteque", query: { initiale: initial } }}
+                    aria-label={`Voir les histoires commençant par ${initial}`}
+                    className="grid aspect-square place-items-center rounded-lg border border-[#10243a]/15 bg-white text-sm font-black text-[#10243a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#315e78] hover:bg-[#10243a] hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#10243a] sm:text-base"
+                  >
+                    {initial}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
     </main>

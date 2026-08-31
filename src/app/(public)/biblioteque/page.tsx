@@ -4,11 +4,13 @@ import StoryCard from "@/components/StoryCard";
 import { createClient } from "@/lib/supabase/server";
 
 const STORIES_PER_PAGE = 10;
+const VALID_INITIALS = new Set([..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"]);
 
 type StoriesPageProps = {
   searchParams: Promise<{
     recherche?: string | string[];
     categorie?: string | string[];
+    initiale?: string | string[];
     page?: string | string[];
   }>;
 };
@@ -21,6 +23,8 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
   const params = await searchParams;
   const search = firstValue(params.recherche)?.trim() ?? "";
   const category = firstValue(params.categorie) ?? "";
+  const requestedInitial = firstValue(params.initiale)?.toUpperCase() ?? "";
+  const initial = VALID_INITIALS.has(requestedInitial) ? requestedInitial : "";
   const requestedPage = Number(firstValue(params.page) ?? "1");
   const currentPage = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
   const start = (currentPage - 1) * STORIES_PER_PAGE;
@@ -58,6 +62,7 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
     .eq("is_published", true);
 
   if (search) storiesQuery = storiesQuery.ilike("title", `%${search}%`);
+  if (initial) storiesQuery = storiesQuery.ilike("title", `${initial}%`);
   if (categoryStoryIds) {
     storiesQuery = categoryStoryIds.length > 0
       ? storiesQuery.in("id", categoryStoryIds)
@@ -79,6 +84,7 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
     const query = new URLSearchParams();
     if (search) query.set("recherche", search);
     if (category) query.set("categorie", category);
+    if (initial) query.set("initiale", initial);
     query.set("page", String(page));
     return `/biblioteque?${query.toString()}`;
   }
@@ -90,6 +96,16 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#678091]">Notre bibliothèque</p>
           <h1 className="text-4xl font-bold tracking-tight text-[#10243a] sm:text-5xl">Toutes les histoires</h1>
           <p className="mt-3 max-w-2xl text-[#5d6a74]">Trouvez la prochaine histoire qui fera voyager votre imagination.</p>
+          {initial && (
+            <div className="mt-5 flex items-center gap-3">
+              <p className="text-sm font-semibold text-[#315e78]">
+                Titres commençant par <span className="font-black text-[#10243a]">{initial}</span>
+              </p>
+              <Link href="/biblioteque" className="text-sm font-semibold text-violet-700 hover:underline">
+                Effacer le filtre
+              </Link>
+            </div>
+          )}
         </div>
 
         <form action="/biblioteque" method="get" className="mt-8 flex items-center gap-2 sm:gap-3">
