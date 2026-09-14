@@ -24,8 +24,8 @@ export default function HomeCategoriesSection({ categories }: HomeCategoriesSect
     <section className="bg-transparent py-12 sm:py-16" aria-labelledby="categories-title">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="mb-7 flex items-center justify-between gap-4">
-          <h2 id="categories-title" className="text-2xl font-bold tracking-tight text-[#10243a]">
-            Catégories populaires
+          <h2 id="categories-title" className="text-3xl sm:text-4xl font-bold tracking-tight text-[#10243a]">
+            Choisissez votre univers
           </h2>
           {hasHiddenCategories && (
             <button
