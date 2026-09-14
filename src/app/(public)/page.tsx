@@ -38,7 +38,7 @@ export default async function HomePage() {
       <section className="relative isolate mx-auto max-w-[1800px] overflow-hidden rounded-[32px] border border-[#10243a]/10 bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)] shadow-sm sm:rounded-[48px]">
         <div className="mx-auto flex max-w-7xl flex-col items-start gap-12 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[650px] lg:flex-row lg:items-center lg:gap-6 lg:px-10 lg:py-20">
           <div className="min-w-0 lg:w-[60%]">
-            <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#10243a] lg:text-6xl xl:text-7xl">Des histoires qui<br />éveillent l’imagination</h1>
+            <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#10243a] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
             <p className="mt-7 max-w-md text-lg leading-8 text-[#3d4b55] sm:text-xl lg:mt-9 lg:text-2xl lg:leading-9">Découvrez des histoires merveilleuses<br className="hidden sm:block" /> à lire partout et à tout moment.</p>
             <Link 
               href="/biblioteque" 
