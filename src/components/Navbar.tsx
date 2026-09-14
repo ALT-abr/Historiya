@@ -57,7 +57,7 @@ export default async function Navbar() {
           </li>
           <li>
             <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/mystories">
-              Générer votre histoire
+              Générateur
             </Link>
           </li>
         </ul>
