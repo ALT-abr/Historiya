@@ -35,14 +35,14 @@ export default async function HomePage() {
   return (
     <main className="bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)]">
       <div className="px-5 pb-10 pt-5 sm:px-8 lg:px-10">
-      <section className="relative isolate mx-auto max-w-[1800px] overflow-hidden rounded-[32px] border border-[#10243a]/10 bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)] shadow-sm sm:rounded-[48px]">
+      <section className="relative isolate mx-auto max-w-[1800px] overflow-hidden rounded-[32px] border border-[#10243a]/10 bg-[#0b172e] shadow-sm sm:rounded-[48px]">
         <div className="mx-auto flex max-w-non flex-col items-start gap-12 px-5 py-5 sm:px-8 sm:py-12 lg:min-h-[550px] lg:flex-row lg:items-center lg:gap-10 lg:px-20 lg:py-12">
           <div className="min-w-0 lg:w-[60%]">
-            <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#10243a] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
-            <p className="mt-5 max-w-xl text-lg leading-7 text-[#3d4b55] lg:mt-6 lg:text-xl lg:leading-8">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
+            <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#f5f7fb] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
+            <p className="mt-5 max-w-xl text-lg leading-7 text-[#cbd5e1] lg:mt-6 lg:text-xl lg:leading-8">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
             <Link 
               href="/biblioteque" 
-              className="mt-6 inline-flex rounded-full bg-[#0d2338] px-7 py-4 text-base font-bold text-white shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-9 lg:py-5 lg:text-lg"
+              className="mt-6 inline-flex rounded-full bg-[#D4A72C] px-7 py-4 text-base font-bold text-[#111827] shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#E0B63F] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-9 lg:py-5 lg:text-lg"
             >
               Explorer les histoires
             </Link>
