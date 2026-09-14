@@ -36,15 +36,15 @@ export default async function HomePage() {
     <main className="bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)]">
       <div className="px-5 pb-10 pt-5 sm:px-8 lg:px-10">
       <section className="relative isolate mx-auto max-w-[1800px] overflow-hidden rounded-[32px] border border-[#10243a]/10 bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)] shadow-sm sm:rounded-[48px]">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-12 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[650px] lg:flex-row lg:items-center lg:gap-6 lg:px-10 lg:py-20">
+        <div className="mx-auto flex max-w-non flex-col items-start gap-12 px-5 py-5 sm:px-8 sm:py-12 lg:min-h-[550px] lg:flex-row lg:items-center lg:gap-10 lg:px-20 lg:py-12">
           <div className="min-w-0 lg:w-[60%]">
             <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#10243a] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
-            <p className="mt-7 max-w-md text-lg leading-8 text-[#3d4b55] sm:text-xl lg:mt-9 lg:text-2xl lg:leading-9">Découvrez des histoires merveilleuses<br className="hidden sm:block" /> à lire partout et à tout moment.</p>
+            <p className="mt-5 max-w-md text-lg leading-8 text-[#3d4b55] sm:text-xl lg:mt-6 lg:text-2xl lg:leading-9">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
             <Link 
               href="/biblioteque" 
-              className="mt-8 inline-flex rounded-xl bg-[#0d2338] px-7 py-4 text-base font-bold text-white shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-10 lg:px-9 lg:py-5 lg:text-lg"
+              className="mt-6 inline-flex rounded-full bg-[#0d2338] px-7 py-4 text-base font-bold text-white shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-9 lg:py-5 lg:text-lg"
             >
-              Commencer à lire
+              Explorer les histoires
             </Link>
           </div>
           <div className="relative mx-auto h-[340px] w-full max-w-[420px] shrink-0 sm:h-[400px] lg:ml-auto lg:w-[38%]">
@@ -52,7 +52,7 @@ export default async function HomePage() {
               <Link
                 key={story.slug}
                 href={`/biblioteque/${story.slug}`}
-                className={`absolute flex h-[260px] w-[57%] flex-col rounded-[24px] border border-[#10243a]/15 p-5 shadow-xl transition hover:-translate-y-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#10243a] sm:h-[310px] sm:p-6 ${index === 0 ? "left-[5%] top-4 -rotate-9 bg-[#f7f8ff] text-[#10243a]" : "right-[3%] top-16 rotate-9 bg-[#0d2338] text-white"}`}
+                className={`absolute flex h-[260px] w-[57%] flex-col rounded-l-[12px] rounded-r-[30px] border border-[#10243a]/15 p-5 shadow-xl transition hover:-translate-y-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#10243a] sm:h-[310px] sm:p-6 ${index === 0 ? "left-[5%] top-4 -rotate-9 bg-[#f7f8ff] text-[#10243a]" : "right-[3%] top-16 rotate-9 bg-[#0d2338] text-white"}`}
               >
                 <span className="[font-family:var(--font-lora),Georgia,serif] text-xl font-bold leading-tight sm:text-2xl">{story.title}</span>
                 <span className="mt-auto pt-5 text-sm opacity-80">{story.reading_time_minutes} min de lecture</span>
