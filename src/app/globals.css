@@ -41,7 +41,21 @@ h3 {
   animation: footer-twinkle 5s ease-in-out infinite;
 }
 
+@keyframes hero-twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.85); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+.hero-star {
+  animation: hero-twinkle 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-star {
+    animation: none;
+    opacity: 0.55;
+  }
+
   .footer-star {
     animation: none;
     opacity: 0.55;

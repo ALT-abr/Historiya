@@ -36,6 +36,26 @@ export default async function HomePage() {
     <main className="bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)]">
       <div className="px-5 pb-10 pt-5 sm:px-8 lg:px-10">
       <section className="relative isolate mx-auto max-w-[1800px] overflow-hidden rounded-[32px] border border-[#10243a]/10 bg-[#0b172e] shadow-sm sm:rounded-[48px]">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          {[
+            [8, 12], [24, 8], [42, 17], [59, 9], [76, 14], [92, 8],
+            [54, 38], [88, 37], [96, 57], [7, 79], [31, 90], [56, 81],
+            [74, 91], [91, 83], [16, 26], [35, 6], [67, 29], [82, 5],
+            [4, 49], [47, 65], [63, 62], [84, 71], [19, 94], [96, 25],
+          ].map(([left, top], index) => (
+            <span
+              key={`${left}-${top}`}
+              className={`hero-star absolute rounded-full ${index % 4 === 0 ? "bg-[#ffe19a] shadow-[0_0_7px_1px_#ffd36b45]" : "bg-[#e3edff] shadow-[0_0_6px_1px_#d4e4ff30]"}`}
+              style={{
+                left: `${left}%`, top: `${top}%`,
+                width: index % 3 === 0 ? 3 : 2,
+                height: index % 3 === 0 ? 3 : 2,
+                animationDuration: `${4 + index % 5}s`,
+                animationDelay: `${-index * 0.7}s`,
+              }}
+            />
+          ))}
+        </div>
         <div className="mx-auto flex max-w-non flex-col items-start gap-12 px-5 py-5 sm:px-8 sm:py-12 lg:min-h-[550px] lg:flex-row lg:items-center lg:gap-10 lg:px-20 lg:py-12">
           <div className="min-w-0 lg:w-[60%]">
             <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#f5f7fb] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
