@@ -39,7 +39,7 @@ export default async function HomePage() {
         <div className="mx-auto flex max-w-non flex-col items-start gap-12 px-5 py-5 sm:px-8 sm:py-12 lg:min-h-[550px] lg:flex-row lg:items-center lg:gap-10 lg:px-20 lg:py-12">
           <div className="min-w-0 lg:w-[60%]">
             <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#10243a] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
-            <p className="mt-5 max-w-md text-lg leading-8 text-[#3d4b55] sm:text-xl lg:mt-6 lg:text-2xl lg:leading-9">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
+            <p className="mt-5 max-w-xl text-lg leading-7 text-[#3d4b55] lg:mt-6 lg:text-xl lg:leading-8">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
             <Link 
               href="/biblioteque" 
               className="mt-6 inline-flex rounded-full bg-[#0d2338] px-7 py-4 text-base font-bold text-white shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#173a59] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-9 lg:py-5 lg:text-lg"
