@@ -19,7 +19,7 @@ export default function StoryCard({
   return (
     <Link
       href={href}
-      className="group block w-full overflow-hidden rounded-2xl bg-[#242529] shadow-sm ring-1 ring-black/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#10243a]"
+      className="group block w-full overflow-hidden rounded-l-[12px] rounded-r-[36px] bg-[#242529] shadow-sm ring-1 ring-black/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#10243a]"
     >
       <article>
         <div className="relative aspect-[3/4] overflow-hidden bg-slate-200">
