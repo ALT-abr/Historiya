@@ -111,7 +111,7 @@ export default async function HomePage() {
       </section>
 
       <section
-        className="border-t border-[#10243a]/10 bg-[#f3eee6] py-14 sm:py-16"
+        className="py-14 sm:py-16"
         aria-labelledby="alphabetical-index-title"
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -140,7 +140,7 @@ export default async function HomePage() {
                   <Link
                     href={{ pathname: "/biblioteque", query: { initiale: initial } }}
                     aria-label={`Voir les histoires commençant par ${initial}`}
-                    className="grid aspect-square place-items-center rounded-lg border border-[#10243a]/15 bg-white text-sm font-black text-[#10243a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#315e78] hover:bg-[#10243a] hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#10243a] sm:text-base"
+                    className="grid aspect-square place-items-center rounded-lg border border-[#10243a]/15 bg-white text-sm font-black text-[#10243a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#f3eee6] hover:bg-[#315e78] hover:text-[#F2C94C] hover:shadow-[0_0_10px_rgba(242,201,76,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#10243a] sm:text-base"
                   >
                     {initial}
                   </Link>
