@@ -61,12 +61,19 @@ export default async function HomePage() {
           <div className="min-w-0 lg:w-[60%]">
             <h1 className="max-w-[56rem] [font-family:var(--font-nunito),Arial,sans-serif] text-[clamp(2.75rem,11vw,4rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#f5f7fb] lg:text-6xl xl:text-7xl">Et si votre prochaine aventure commençait ici ?</h1>
             <p className="mt-5 max-w-xl text-lg leading-7 text-[#cbd5e1] lg:mt-6 lg:text-xl lg:leading-8">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 lg:mt-7">
             <Link 
               href="/biblioteque" 
-              className="mt-6 inline-flex rounded-full bg-[#D4A72C] px-6 py-3 text-base font-bold text-[#111827] shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#E0B63F] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-7 lg:py-3 lg:text-lg"
+              className="inline-flex rounded-full bg-[#f9d731] px-6 py-3 text-base font-bold text-[#00264a] shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#E0B63F] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:px-7 lg:py-3 lg:text-lg"
             >
               Explorer les histoires
             </Link>
+            <form action="/lecture-surprise" method="get">
+              <button type="submit" className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white px-6 py-3 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:px-7 lg:text-lg">
+                Lecture surprise <span aria-hidden="true">✧˖</span>
+              </button>
+            </form>
+            </div>
           </div>
           <div className="relative mx-auto h-[340px] w-full max-w-[420px] shrink-0 sm:h-[400px] lg:ml-auto lg:w-[38%]">
             {databaseStories.slice(0, 2).map((story, index) => (
