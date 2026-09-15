@@ -89,20 +89,23 @@ export default function HomeCategoriesSection({ categories }: HomeCategoriesSect
     animationRef.current = requestAnimationFrame(animate);
   }
 
-  const arrowClassName = "flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[#315e78]/20 text-sm text-[#315e78] transition hover:bg-[#315e78]/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d2338] disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent";
+  const arrowClassName = "flex size-14 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#f9fbff] text-[#587b96] shadow-[0_10px_24px_rgba(102,143,190,0.22)] transition hover:bg-white hover:shadow-[0_10px_28px_rgba(102,143,190,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0d2338] disabled:cursor-default disabled:text-[#587b96]/50";
 
   return (
     <section className="bg-transparent py-12 sm:py-16" aria-labelledby="categories-title">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="mb-7 flex items-center justify-between gap-4">
+        <div className="mb-7">
           <h2 id="categories-title" className="text-3xl sm:text-4xl font-bold tracking-tight text-[#10243a]">
             Choisissez votre univers
           </h2>
+          <p className="mt-3 text-[#52616b]">Un raccourci vers l’histoire qui vous ressemble aujourd’hui.</p>
         </div>
 
         <div className="flex min-w-0 items-center gap-3" role="region" aria-roledescription="carrousel" aria-label="Catégories d’histoires">
           <button type="button" className={arrowClassName} disabled={bounds.start} onClick={() => moveCategory(-1)} aria-label="Catégorie précédente" aria-controls="home-categories-list">
-            <span aria-hidden="true">❮</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 5-7 7 7 7" />
+            </svg>
           </button>
           <div
             ref={viewportRef}
@@ -119,7 +122,9 @@ export default function HomeCategoriesSection({ categories }: HomeCategoriesSect
             ))}
           </div>
           <button type="button" className={arrowClassName} disabled={bounds.end} onClick={() => moveCategory(1)} aria-label="Catégorie suivante" aria-controls="home-categories-list">
-            <span aria-hidden="true">❯</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m9 5 7 7-7 7" />
+            </svg>
           </button>
         </div>
       </div>
