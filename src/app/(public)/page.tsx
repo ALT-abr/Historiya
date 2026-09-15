@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 import StoryCard from "@/components/StoryCard";
+import WeeklyStorySection from "@/components/WeeklyStorySection";
 import { createClient } from "@/lib/supabase/server";
 
 const STORY_INITIALS = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"];
@@ -109,6 +110,8 @@ export default async function HomePage() {
           )}
         </div>
       </section>
+
+      <WeeklyStorySection />
 
       <section
         className="py-14 sm:py-16"
