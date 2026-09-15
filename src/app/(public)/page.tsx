@@ -3,6 +3,7 @@ import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 import StoryCard from "@/components/StoryCard";
 import WeeklyStorySection from "@/components/WeeklyStorySection";
 import HomeBackground from "@/components/HomeBackground";
+import HomeSectionAccent from "@/components/HomeSectionAccent";
 import { createClient } from "@/lib/supabase/server";
 
 const STORY_INITIALS = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"];
@@ -93,7 +94,9 @@ export default async function HomePage() {
       </section>
       </div>
 
+      <HomeSectionAccent variant="cloud" />
       <HomeCategoriesSection categories={databaseCategories} />
+      <HomeSectionAccent variant="flight" />
 
       <section className="bg-transparent py-12 sm:py-16" aria-labelledby="popular-stories-title">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -120,7 +123,9 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <HomeSectionAccent variant="storybook" />
       <WeeklyStorySection />
+      <HomeSectionAccent variant="moon" />
 
       <section
         className="py-14 sm:py-16"
