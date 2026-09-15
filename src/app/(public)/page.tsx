@@ -62,7 +62,7 @@ export default async function HomePage() {
             <p className="mt-5 max-w-xl text-lg leading-7 text-[#cbd5e1] lg:mt-6 lg:text-xl lg:leading-8">Des récits courts ou merveilleux à lire librement, selon votre humeur et le temps que vous avez.</p>
             <Link 
               href="/biblioteque" 
-              className="mt-6 inline-flex rounded-full bg-[#D4A72C] px-7 py-4 text-base font-bold text-[#111827] shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#E0B63F] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-9 lg:py-5 lg:text-lg"
+              className="mt-6 inline-flex rounded-full bg-[#D4A72C] px-6 py-3 text-base font-bold text-[#111827] shadow-lg shadow-[#0d2338]/20 transition hover:-translate-y-0.5 hover:bg-[#E0B63F] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0d2338] lg:mt-7 lg:px-7 lg:py-3 lg:text-lg"
             >
               Explorer les histoires
             </Link>
