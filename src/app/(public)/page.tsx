@@ -2,6 +2,7 @@ import Link from "next/link";
 import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 import StoryCard from "@/components/StoryCard";
 import WeeklyStorySection from "@/components/WeeklyStorySection";
+import HomeBackground from "@/components/HomeBackground";
 import { createClient } from "@/lib/supabase/server";
 
 const STORY_INITIALS = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"];
@@ -34,7 +35,8 @@ export default async function HomePage() {
   const databaseStories = storiesResult.data ?? [];
 
   return (
-    <main className="bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)]">
+    <main className="relative isolate bg-[linear-gradient(135deg,#fbfcff_0%,#f7f8ff_55%,#fffaf5_100%)]">
+      <HomeBackground />
       <div className="px-5 pb-10 pt-5 sm:px-8 lg:px-10">
       <section className="relative isolate mx-auto max-w-[1800px] overflow-hidden rounded-[32px] border border-[#10243a]/10 bg-[#0b172e] shadow-sm sm:rounded-[48px]">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
