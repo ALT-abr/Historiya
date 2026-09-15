@@ -87,8 +87,14 @@ export default async function HomePage() {
 
       <section className="bg-transparent py-12 sm:py-16" aria-labelledby="popular-stories-title">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-7 flex items-center justify-between gap-4">
+          <div className="mb-7">
             <h2 id="popular-stories-title" className="text-3xl sm:text-4xl font-bold tracking-tight text-[#10243a]">Histoires à découvrir</h2>
+            <div className="mt-3 flex items-center justify-between gap-4">
+              <p className="text-[#52616b]">Une sélection pour commencer votre voyage</p>
+              <Link href="/biblioteque" className="inline-flex shrink-0 items-center gap-2 text-sm font-extrabold text-[#10243a] hover:underline">
+                Découvrir plus <span aria-hidden="true">➺</span>
+              </Link>
+            </div>
           </div>
           {databaseStories.length === 0 ? (
             <p className="rounded-2xl bg-white px-6 py-10 text-center text-[#52616b] shadow-sm">
