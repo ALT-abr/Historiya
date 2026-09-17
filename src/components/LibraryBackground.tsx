@@ -12,7 +12,7 @@ export default function LibraryBackground() {
         className="absolute -right-10 top-6 h-auto w-40 opacity-20 lg:right-[3%] lg:w-80 lg:opacity-35"
       />
       <Image
-        src="/blue-bird.png"
+        src="/decorations/blue-bird.png"
         alt=""
         width={1536}
         height={1024}
@@ -20,7 +20,7 @@ export default function LibraryBackground() {
         className="absolute left-[8%] top-1 h-auto w-12 -rotate-12 opacity-55 lg:left-[12%] lg:w-16"
       />
       <Image
-        src="/claude-moon-seen.png"
+        src="/decorations/claude-moon-seen.png"
         alt=""
         width={2172}
         height={724}
