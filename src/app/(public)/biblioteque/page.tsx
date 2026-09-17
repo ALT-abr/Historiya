@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 import StoryCard from "@/components/StoryCard";
+import LibraryBackground from "@/components/LibraryBackground";
 import { createClient } from "@/lib/supabase/server";
 
 const STORIES_PER_PAGE = 10;
@@ -90,7 +91,8 @@ export default async function StoriesPage({ searchParams }: StoriesPageProps) {
   }
 
   return (
-    <section className="min-h-screen bg-[#fffdf8] px-5 py-12 sm:px-8 lg:px-10">
+    <section className="relative isolate min-h-screen bg-[#fffdf8] px-5 py-12 sm:px-8 lg:px-10">
+      <LibraryBackground />
       <div className="mx-auto max-w-7xl">
         <div className="mb-9">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#678091]">Notre bibliothèque</p>

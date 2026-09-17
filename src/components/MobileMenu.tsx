@@ -79,6 +79,9 @@ export default function MobileMenu({ isAuthenticated, username }: MobileMenuProp
                   <li key={item.href}>
                     <Link href={item.href} onClick={() => setIsOpen(false)} className="block rounded-xl px-3 py-2 font-semibold text-[#26384b] transition hover:bg-violet-50 hover:text-violet-700">
                       {item.label}
+                      {(item.href === "/biblioteque" || item.href === "/mystories") && (
+                        <span className="ml-1.5 inline-block rounded-full bg-yellow-200 px-2 py-0.5 align-middle text-[10px] font-bold leading-none text-yellow-900">Bientôt</span>
+                      )}
                     </Link>
                   </li>
                 ))}
