@@ -39,7 +39,7 @@ export default async function Navbar() {
           Historiya
         </Link>
 
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 whitespace-nowrap text-sm font-semibold text-[#34465a] md:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 whitespace-nowrap text-[16px] font-semibold text-[#34465a] md:flex">
           <li>
             <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/">
               Accueil
