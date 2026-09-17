@@ -48,12 +48,13 @@ export default async function Navbar() {
           <li>
             <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/biblioteque">
               Bibliothèque
-              <span className="ml-1.5 inline-block rounded-full bg-yellow-200 px-2 py-0.5 align-middle text-[10px] font-bold leading-none text-yellow-900">Bientôt</span>
             </Link>
           </li>
           <li>
             <Link className="rounded-xl px-3 py-2 transition hover:bg-[#f3f6ff] hover:text-[#5965e8]" href="/audio">
               Audio
+              <span className="ml-1.5 inline-block rounded-full bg-yellow-200 px-2 py-0.5 align-middle text-[10px] font-bold leading-none text-yellow-900">Bientôt</span>
+
             </Link>
           </li>
           <li>
